@@ -1,0 +1,10 @@
+.home_page_container.MuiContainer-root {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.home_page_main {
+    flex: 1;
+}
