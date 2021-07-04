@@ -1,4 +1,3 @@
-# todo
 # Store Front
 
 ## Author: Wesam Al-Masri
