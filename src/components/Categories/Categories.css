@@ -1,0 +1,10 @@
+.categories_tab.MuiAppBar-root {
+    background-color: white;
+    border-bottom: 1px grey solid;
+    color: black;
+    box-shadow: none;
+}
+
+.categories_tab.MuiAppBar-root button:hover {
+    background-color: rgb(218, 216, 216);
+}
