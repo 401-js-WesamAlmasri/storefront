@@ -5,7 +5,8 @@ import Categories from '../../components/Categories/Categories';
 import Products from '../../components/Products/Products';
 import Footer from '../../components/Footer/Footer';
 
-function HomePage() {
+const HomePage = (props) => {
+
   return (
     <Container className='home_page_container' maxWidth='xl'>
       <Header />
@@ -16,6 +17,7 @@ function HomePage() {
       <Footer />
     </Container>
   );
-}
+};
+
 
 export default HomePage;

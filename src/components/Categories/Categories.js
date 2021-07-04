@@ -1,22 +1,35 @@
 import './Categories.css';
 import { AppBar, Tabs, Tab } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { activeCategoryAction } from '../../store/categories';
 
-function Categories() {
+
+function Categories(props) {
+  const handleClick = (categoryName) => {
+    props.setActiveCategory(categoryName);
+  }
+  console.log(props.activeCategory)
   return (
     <>
       <AppBar className='categories_tab' position='static'>
-        <Tabs
-          value={'value'}
-        //   onChange={handleChange}
-          aria-label='simple tabs example'
-        >
-          <Tab label='Electronics'  />
-          <Tab label='Food' />
-          <Tab label='Clothes' />
+        <Tabs>
+          {
+            props.categories.map((category) => <Tab className={props.activeCategory === category ? 'active_tab' : ''} label={category} onClick={() => handleClick(category)}  />)
+          }
         </Tabs>
       </AppBar>
     </>
   );
 }
 
-export default Categories;
+const mapStateToProps = (state) => ({
+  categories: state.categories.categories,
+  activeCategory: state.categories.activeCategory,
+  products: state.products.products,
+});
+
+const mapDispatchToProps = {
+  setActiveCategory: activeCategoryAction,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

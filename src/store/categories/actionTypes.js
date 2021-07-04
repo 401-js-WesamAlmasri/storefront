@@ -1,0 +1,1 @@
+export const ACTIVE_CATEGORY = 'ACTIVE_CATEGORY';

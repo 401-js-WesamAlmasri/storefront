@@ -8,3 +8,7 @@
 .categories_tab.MuiAppBar-root button:hover {
     background-color: rgb(218, 216, 216);
 }
+
+.categories_tab.MuiAppBar-root button.active_tab {
+    background-color: rgb(197, 225, 248);
+}
