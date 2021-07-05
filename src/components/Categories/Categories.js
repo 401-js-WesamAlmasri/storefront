@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './Categories.css';
 import { AppBar, Tabs, Tab } from '@material-ui/core';
 import { connect } from 'react-redux';
@@ -5,17 +6,27 @@ import { activeCategoryAction } from '../../store/categories';
 
 
 function Categories(props) {
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   const handleClick = (categoryName) => {
     props.setActiveCategory(categoryName);
-  }
-  console.log(props.activeCategory)
+  };
+
   return (
     <>
       <AppBar className='categories_tab' position='static'>
-        <Tabs>
-          {
-            props.categories.map((category) => <Tab className={props.activeCategory === category ? 'active_tab' : ''} label={category} onClick={() => handleClick(category)}  />)
-          }
+        <Tabs value={value} onChange={handleChange}>
+          {props.categories.map((category, index) => (
+            <Tab
+              key={index}
+              label={category.displayName}
+              onClick={() => handleClick(category.name)}
+            />
+          ))}
         </Tabs>
       </AppBar>
     </>

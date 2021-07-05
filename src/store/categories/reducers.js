@@ -1,7 +1,18 @@
 import { ACTIVE_CATEGORY } from './actionTypes';
 
 let initialState = {
-  categories: ['electronics', 'food', 'console', 'mobile', 'phones', 'shirts'],
+  categories: [
+    {
+      name: 'electronics',
+      displayName: 'electronics',
+      description: 'All Electronic devices that you need'
+    },
+    {
+      name: 'food',
+      displayName: 'food',
+      description: 'All delicious food that you love'
+    }
+  ],
   activeCategory: '',
 };
 
@@ -10,7 +21,7 @@ const categoriesReducer = (state = initialState, action) => {
     case ACTIVE_CATEGORY:
       return {
         ...state,
-        activeCategory: action.payload,
+        activeCategory: action.payload.name,
       };
 
     default:

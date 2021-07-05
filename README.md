@@ -10,7 +10,7 @@
 
 ## UML
 
-![uml](assets/front-store1.png)
+![uml](assets/front-store2.png)
 
 ## Deployed Link
 

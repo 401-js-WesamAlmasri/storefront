@@ -1,0 +1,10 @@
+
+.MuiList-root.simple_cart_container {
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 2%;
+    z-index: 1000;
+    background-color: antiquewhite;
+}
