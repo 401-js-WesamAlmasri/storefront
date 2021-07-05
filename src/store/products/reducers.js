@@ -65,7 +65,7 @@ const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ACTIVE_CATEGORY:
       return {
-        products: state.products.filter(
+        products: initialState.products.filter(
           (product) => product.category === action.payload
         ),
       };
