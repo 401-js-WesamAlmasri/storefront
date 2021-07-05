@@ -14,7 +14,7 @@ function Categories(props) {
       <AppBar className='categories_tab' position='static'>
         <Tabs>
           {
-            props.categories.map((category) => <Tab className={props.activeCategory === category ? 'active_tab' : ''} label={category} onClick={() => handleClick(category)}  />)
+            props.categories.map((category) => <Tab className={props.activeCategory === category.name ? 'active_tab' : ''} label={category.displayName} onClick={() => handleClick(category.name)}  />)
           }
         </Tabs>
       </AppBar>

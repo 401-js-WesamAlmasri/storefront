@@ -1,7 +1,8 @@
 import './Header.css';
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { connect } from 'react-redux';
 
-function Header() {
+function Header(props) {
   return (
       <AppBar position='relative'>
         <Toolbar>
@@ -13,4 +14,8 @@ function Header() {
   );
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+  cart: state.cart
+})
+
+export default connect(mapStateToProps)(Header);
