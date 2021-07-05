@@ -8,17 +8,18 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
-    root: {
-      maxWidth: 345,
-      marginBottom: 20
-    },
-    media: {
-      height: 140,
-    },
-  });
+  root: {
+    maxWidth: 345,
+    marginBottom: 20,
+  },
+  media: {
+    height: 140,
+  },
+});
 
-function ProductCard({product}) {
-    const classes = useStyles();
+function ProductCard({ product, onAddToCard }) {
+  const classes = useStyles();
+
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -29,15 +30,22 @@ function ProductCard({product}) {
         />
         <CardContent>
           <Typography gutterBottom variant='h5' component='h2'>
-          {product.name}
+            {product.name}
           </Typography>
           <Typography variant='body2' color='textSecondary' component='p'>
             {product.description}
           </Typography>
+          <Typography variant='caption' component='p'>
+            Price: {product.price} $
+          </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size='small' color='primary'>
+        <Button
+          onClick={onAddToCard}
+          size='small'
+          color='primary'
+        >
           Add To Cart
         </Button>
         <Button size='small' color='primary'>

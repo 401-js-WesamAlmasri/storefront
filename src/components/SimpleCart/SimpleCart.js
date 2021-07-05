@@ -1,16 +1,45 @@
-import './Products.css';
+import './SimpleCart.css';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { removeFromCartAction } from '../../store/cart';
 import { connect } from 'react-redux';
 
-function SimpleCart(props) {
+const SimpleCart = (props) => {
+  console.log('props.cartItems : ', props.cartItems)
   return (
-    <div className='products_section_container'>
-      <h1>Simple Cart</h1>
-    </div>
+    <List className='simple_cart_container'>
+      {props.cartItems.map((item, index) => (
+        <CartItem
+          key={index}
+          item={item}
+          onDelete={() => props.removeFromCart(item._id)}
+        />
+      ))}
+    </List>
   );
-}
+};
+
+const CartItem = ({ item, onDelete }) => {
+  return (
+    <ListItem>
+      <ListItemText primary={item.name} />
+      <ListItemText primary={item.count} />
+      <IconButton aria-label='delete'>
+        <DeleteIcon onClick={onDelete} color='secondary' />
+      </IconButton>
+    </ListItem>
+  );
+};
 
 const mapStateToProps = (state) => ({
-  products: state.products.products,
+  cartItems: state.cart,
 });
 
-export default connect(mapStateToProps)(SimpleCart);
+const mapDispatchToProps = {
+  removeFromCart: removeFromCartAction,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SimpleCart);

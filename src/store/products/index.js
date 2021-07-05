@@ -1,3 +1,4 @@
 import productsReducer from './reducers';
+import { activeCategoryAction } from './actions';
 
-export { productsReducer };
+export { productsReducer, activeCategoryAction };
