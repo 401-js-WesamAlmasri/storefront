@@ -5,17 +5,21 @@ import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { removeFromCartAction } from '../../store/cart';
+import { incrementInStockAction } from '../../store/products';
 import { connect } from 'react-redux';
 
 const SimpleCart = (props) => {
-  console.log('props.cartItems : ', props.cartItems)
+  const onDelete = (item) => {
+    props.removeFromCart(item._id);
+    props.incrementInStock(item._id, item.count);
+  }
   return (
     <List className='simple_cart_container'>
       {props.cartItems.map((item, index) => (
         <CartItem
           key={index}
           item={item}
-          onDelete={() => props.removeFromCart(item._id)}
+          onDelete={() => onDelete(item)}
         />
       ))}
     </List>
@@ -40,6 +44,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   removeFromCart: removeFromCartAction,
+  incrementInStock: incrementInStockAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleCart);

@@ -1,5 +1,5 @@
 import { ACTIVE_CATEGORY } from '../categories';
-import { DECREMENT_IN_STOCK } from './actionTypes';
+import { DECREMENT_IN_STOCK, INCREMENT_IN_STOCK } from './actionTypes';
 
 let initialState = {
   allProducts: [
@@ -160,12 +160,42 @@ const productsReducer = (state = initialState, action) => {
 
     case DECREMENT_IN_STOCK:
       return {
-        ...state,
-        allProducts: state.allProducts.map((p) => {
-          if (p._id === action.payload.id) {
+        products: state.products.map((p) => {
+          if (p._id === action.payload._id) {
             return {
               ...p,
-              inStock: p.inStock - 1,
+              inStock: p.inStock - action.payload.count,
+            };
+          }
+          return p;
+        }),
+        allProducts: state.allProducts.map((p) => {
+          if (p._id === action.payload._id) {
+            return {
+              ...p,
+              inStock: p.inStock - action.payload.count,
+            };
+          }
+          return p;
+        }),
+      };
+
+    case INCREMENT_IN_STOCK:
+      return {
+        products: state.products.map((p) => {
+          if (p._id === action.payload._id) {
+            return {
+              ...p,
+              inStock: p.inStock + action.payload.count,
+            };
+          }
+          return p;
+        }),
+        allProducts: state.allProducts.map((p) => {
+          if (p._id === action.payload._id) {
+            return {
+              ...p,
+              inStock: p.inStock + action.payload.count,
             };
           }
           return p;

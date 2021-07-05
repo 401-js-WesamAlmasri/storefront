@@ -1,4 +1,13 @@
 import productsReducer from './reducers';
-import { activeCategoryAction } from './actions';
+import {
+  activeCategoryAction,
+  decrementInStockAction,
+  incrementInStockAction,
+} from './actions';
 
-export { productsReducer, activeCategoryAction };
+export {
+  productsReducer,
+  activeCategoryAction,
+  incrementInStockAction,
+  decrementInStockAction,
+};
