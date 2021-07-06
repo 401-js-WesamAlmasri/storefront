@@ -2,7 +2,7 @@ import { ACTIVE_CATEGORY, GET_CATEGORIES } from './actionTypes';
 
 let initialState = {
   categories: [],
-  activeCategory: '',
+  activeCategory: 'food',
 };
 
 const categoriesReducer = (state = initialState, action) => {

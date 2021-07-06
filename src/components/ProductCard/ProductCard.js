@@ -25,7 +25,7 @@ function ProductCard({ product, onAddToCard }) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={product.image}
+          image={product.image || 'https://whyfutz.com/wp-content/uploads/2020/04/product.jpg'}
           title={product.name}
         />
         <CardContent>

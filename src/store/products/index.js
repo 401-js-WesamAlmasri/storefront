@@ -1,5 +1,6 @@
 import productsReducer from './reducers';
 import {
+  getProductsActionAsync,
   activeCategoryAction,
   decrementInStockAction,
   incrementInStockAction,
@@ -7,6 +8,7 @@ import {
 
 export {
   productsReducer,
+  getProductsActionAsync,
   activeCategoryAction,
   incrementInStockAction,
   decrementInStockAction,
