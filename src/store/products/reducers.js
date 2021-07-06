@@ -154,7 +154,7 @@ const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         products: state.allProducts.filter(
-          (product) => product.category === action.payload.name
+          (product) => product.category === action.payload.name && product.inStock > 0
         ),
       };
 
@@ -164,7 +164,7 @@ const productsReducer = (state = initialState, action) => {
           if (p._id === action.payload._id) {
             return {
               ...p,
-              inStock: p.inStock - action.payload.count,
+              inStock: p.inStock - action.payload.count >= 0 ? p.inStock - action.payload.count : 0,
             };
           }
           return p;
@@ -173,7 +173,7 @@ const productsReducer = (state = initialState, action) => {
           if (p._id === action.payload._id) {
             return {
               ...p,
-              inStock: p.inStock - action.payload.count,
+              inStock: p.inStock - action.payload.count >= 0 ? p.inStock - action.payload.count : 0,
             };
           }
           return p;

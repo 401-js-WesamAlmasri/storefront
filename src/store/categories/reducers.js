@@ -1,23 +1,18 @@
-import { ACTIVE_CATEGORY } from './actionTypes';
+import { ACTIVE_CATEGORY, GET_CATEGORIES } from './actionTypes';
 
 let initialState = {
-  categories: [
-    {
-      name: 'electronics',
-      displayName: 'electronics',
-      description: 'All Electronic devices that you need'
-    },
-    {
-      name: 'food',
-      displayName: 'food',
-      description: 'All delicious food that you love'
-    }
-  ],
+  categories: [],
   activeCategory: '',
 };
 
 const categoriesReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload,
+      };
+
     case ACTIVE_CATEGORY:
       return {
         ...state,
