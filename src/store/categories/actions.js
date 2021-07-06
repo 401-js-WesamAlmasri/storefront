@@ -3,7 +3,7 @@ import superagent from 'superagent';
 
 const apiCategories = 'https://api-js401.herokuapp.com/api/v1/categories';
 
-export const getCategoriesActionAsync = () => async(dispatch, state) => {
+export const getCategoriesActionAsync = () => async(dispatch, getState) => {
   const response = await superagent.get(apiCategories);
   dispatch(getCategoriesAction(response.body.results));
 }

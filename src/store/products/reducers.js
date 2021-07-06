@@ -32,25 +32,13 @@ const productsReducer = (state = initialState, action) => {
       return {
         products: state.products.map((p) => {
           if (p._id === action.payload._id) {
-            return {
-              ...p,
-              inStock:
-                p.inStock - action.payload.count >= 0
-                  ? p.inStock - action.payload.count
-                  : 0,
-            };
+            return action.payload.product
           }
           return p;
         }),
         allProducts: state.allProducts.map((p) => {
           if (p._id === action.payload._id) {
-            return {
-              ...p,
-              inStock:
-                p.inStock - action.payload.count >= 0
-                  ? p.inStock - action.payload.count
-                  : 0,
-            };
+            return action.payload.product
           }
           return p;
         }),
@@ -60,19 +48,13 @@ const productsReducer = (state = initialState, action) => {
       return {
         products: state.products.map((p) => {
           if (p._id === action.payload._id) {
-            return {
-              ...p,
-              inStock: p.inStock + action.payload.count,
-            };
+            return action.payload.product
           }
           return p;
         }),
         allProducts: state.allProducts.map((p) => {
           if (p._id === action.payload._id) {
-            return {
-              ...p,
-              inStock: p.inStock + action.payload.count,
-            };
+            return action.payload.product
           }
           return p;
         }),

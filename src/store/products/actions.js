@@ -8,7 +8,7 @@ import {
 
 const apiProduct = 'https://api-js401.herokuapp.com/api/v1/products';
 
-export const getProductsActionAsync = () => async (dispatch, state) => {
+export const getProductsActionAsync = () => async (dispatch, getState) => {
   const response = await superagent.get(apiProduct);
   return dispatch(getProductsAction(response.body.results));
 };
@@ -25,18 +25,44 @@ export const activeCategoryAction = (categoryName) => ({
   },
 });
 
-export const decrementInStockAction = (id, count = 1) => ({
+export const decrementInStockActionAsync =
+  (id, count = 1) =>
+  async (dispatch, getState) => {
+    const oldProduct = getState().products.allProducts.find(
+      (p) => p._id === id
+    );
+    const response = await superagent
+      .put(`${apiProduct}/${id}`)
+      .send({ inStock: oldProduct.inStock - count });
+
+    return dispatch(decrementInStockAction(id, response.body));
+  };
+
+const decrementInStockAction = (id, product) => ({
   type: DECREMENT_IN_STOCK,
   payload: {
     _id: id,
-    count,
+    product,
   },
 });
 
-export const incrementInStockAction = (id, count = 1) => ({
+export const incrementInStockActionAsync =
+  (id, count = 1) =>
+  async (dispatch, getState) => {
+    const oldProduct = getState().products.allProducts.find(
+      (p) => p._id === id
+    );
+    const response = await superagent
+      .put(`${apiProduct}/${id}`)
+      .send({ inStock: oldProduct.inStock + count });
+
+    return dispatch(incrementInStockAction(id, response.body));
+  };
+
+const incrementInStockAction = (id, product) => ({
   type: INCREMENT_IN_STOCK,
   payload: {
     _id: id,
-    count,
+    product,
   },
 });

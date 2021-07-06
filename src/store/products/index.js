@@ -2,14 +2,14 @@ import productsReducer from './reducers';
 import {
   getProductsActionAsync,
   activeCategoryAction,
-  decrementInStockAction,
-  incrementInStockAction,
+  decrementInStockActionAsync,
+  incrementInStockActionAsync,
 } from './actions';
 
 export {
   productsReducer,
   getProductsActionAsync,
   activeCategoryAction,
-  incrementInStockAction,
-  decrementInStockAction,
+  incrementInStockActionAsync,
+  decrementInStockActionAsync,
 };
