@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -18,6 +19,7 @@ const useStyles = makeStyles({
 });
 
 function ProductCard({ product, onAddToCard }) {
+  let history = useHistory();
   const classes = useStyles();
 
   return (
@@ -25,7 +27,7 @@ function ProductCard({ product, onAddToCard }) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={product.image || 'https://whyfutz.com/wp-content/uploads/2020/04/product.jpg'}
+          image={product.image || `https://source.unsplash.com/random?${product.name}`}
           title={product.name}
         />
         <CardContent>
@@ -34,6 +36,9 @@ function ProductCard({ product, onAddToCard }) {
           </Typography>
           <Typography variant='body2' color='textSecondary' component='p'>
             {product.description}
+          </Typography>
+          <Typography variant='caption' component='p'>
+            In stock: {product.inStock}
           </Typography>
           <Typography variant='caption' component='p'>
             Price: {product.price} $
@@ -48,7 +53,7 @@ function ProductCard({ product, onAddToCard }) {
         >
           Add To Cart
         </Button>
-        <Button size='small' color='primary'>
+        <Button onClick={() => {history.push(`/products/${product._id}`)}} size='small' color='primary'>
           View Details
         </Button>
       </CardActions>

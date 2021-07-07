@@ -1,0 +1,26 @@
+div.MuiContainer-root.MuiContainer-maxWidthSm{
+    padding: 2% 0;
+}
+
+div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12 img {
+    max-width: 100%;
+    padding: 3% 0;
+}
+
+p.product_price.MuiTypography-root.MuiTypography-h5.MuiTypography-paragraph {
+    text-align: right;
+    color: grey;
+}
+
+button.buy_product_btn {
+    margin: 3% 0;
+    width: 100%;
+}
+
+.product_related {
+    margin: 3% 0;
+}
+
+.product_related_item {
+    padding: 2%;
+}
