@@ -18,7 +18,9 @@ function Header(props) {
             OUR STORE
         </Link>
           </Typography>
-        <Typography color='inherit'> CART ({cartItems})</Typography>
+          <Link className='header_home_link' to='/checkout'>
+            <Typography color='inherit'> CART ({cartItems})</Typography>
+        </Link>
       </Toolbar>
     </AppBar>
   );

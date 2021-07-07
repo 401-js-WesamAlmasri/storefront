@@ -7,6 +7,7 @@ import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import SimpleCart from './components/SimpleCart/SimpleCart';
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route path='/products/:productId' component={ProductDetailsPage} />
+            <Route path='/checkout' component={CheckoutPage} />
           </Switch>
           <Footer />
         </Router>
