@@ -8,12 +8,6 @@ import {
 } from '../../store/categories';
 
 
-const mapStateToProps = (state) => ({
-  categories: state.categories.categories,
-});
-
-
-
 function Categories(props) {
   const [value, setValue] = useState(0);
   const dispatch = useDispatch();
@@ -28,6 +22,7 @@ function Categories(props) {
   };
 
   useEffect(() => {
+    setValue(state.categories.findIndex( cat => cat.name === state.activeCategory));
     dispatch(getCategoriesActionAsync());
   }, []);
 
@@ -47,5 +42,12 @@ function Categories(props) {
     </>
   );
 }
+
+
+const mapStateToProps = (state) => ({
+  categories: state.categories.categories,
+  activeCategory: state.categories.activeCategory,
+});
+
 
 export default Categories;

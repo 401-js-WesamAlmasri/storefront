@@ -2,7 +2,10 @@ import { useEffect } from 'react';
 import './Products.css';
 import ProductCard from '../ProductCard/ProductCard';
 import { addToCartAction } from '../../store/cart';
-import { getProductsActionAsync, decrementInStockActionAsync } from '../../store/products';
+import {
+  getProductsActionAsync,
+  decrementInStockActionAsync,
+} from '../../store/products';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Products(props) {
@@ -15,8 +18,10 @@ function Products(props) {
   };
 
   useEffect(() => {
-    dispatch(getProductsActionAsync());
-  }, [])
+    if (state.products.length === 0) {
+      dispatch(getProductsActionAsync());
+    }
+  }, []);
 
   return (
     <div className='products_section_container'>
@@ -34,6 +39,5 @@ function Products(props) {
 const mapStateToProps = (state) => ({
   products: state.products.products,
 });
-
 
 export default Products;
