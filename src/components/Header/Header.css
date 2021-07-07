@@ -1,3 +1,8 @@
 header .MuiToolbar-root.header_toolbar {
     justify-content: space-between;
 }
+
+.header_home_link {
+    text-decoration: none;
+    color: white;
+}
